@@ -517,3 +517,10 @@ def _read_key_file(key_file):
 def _push_key(key_file='~/.ssh/id_rsa.pub'):
     key_text = _read_key_file(key_file)
     append('~/.ssh/authorized_keys', key_text)
+
+
+def _pg_create_db():
+    sudo('psql -U postgres -c "CREATE ROLE {0} WITH PASSWORD \'{1}\' NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;"'.format(env.psql_user, env.psql_password))
+    sudo('psql -U postgres -c "CREATE DATABASE {0} WITH OWNER={1} TEMPLATE=template0 ENCODING=\'utf-8\';"'.format(env.psql_db, env.psql_user))
+
+
