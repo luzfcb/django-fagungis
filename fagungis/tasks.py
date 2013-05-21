@@ -519,8 +519,8 @@ def _push_key(key_file='~/.ssh/id_rsa.pub'):
     append('~/.ssh/authorized_keys', key_text)
 
 
-def _pg_create_db():
+def _pg_create_user_and_db():
     sudo('psql -U postgres -c "CREATE ROLE {0} WITH PASSWORD \'{1}\' NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;"'.format(env.psql_user, env.psql_password))
-    sudo('psql -U postgres -c "CREATE DATABASE {0} WITH OWNER={1} TEMPLATE=template0 ENCODING=\'utf-8\';"'.format(env.psql_db, env.psql_user))
+    sudo('psql -U postgres -c "CREATE DATABASE {0} WITH OWNER={1} TEMPLATE=template0 ENCODING=\'utf-8\';"'.format(env.psql_db_name, env.psql_user))
 
 

@@ -7,6 +7,20 @@ from fagungis.tasks import *
 
 @task
 def example():
+    
+    ### START DATABASE CONFIGURATIONS
+    ### 
+    # usuario do banco de dados
+    env.psql_user = 'django'
+    # senha do banco de dados
+    # TODO: Criar funcao para geracao de hash para senha
+    env.psql_password = '123123'
+    # nome do banco de dados
+    # TODO: adicionar modo para
+    env.psql_db_name = 'django_db'
+    
+    ### END DATABESE CONFIGURATIONS
+    
     #  name of your project - no spaces, no special chars
     env.project = 'example_production'
     #  hg repository of your project
