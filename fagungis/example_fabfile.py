@@ -12,12 +12,14 @@ def example():
     #  hg repository of your project
     env.repository = 'https://bitbucket.org/DNX/example'
     #  type of repository (git or hg)
-    env.repository_type = 'hg'
+    env.repository_type = 'git'
+    #  if your host uses a different port, simply add :PortNumber after host ip
+    #  ex.: root@192.168.1.1:443
     #  hosts to deploy your project, users must be sudoers
     env.hosts = ['root@192.168.1.1', ]
     # additional packages to be installed on the server
     env.additional_packages = [
-        'mercurial',
+        'git-core',
     ]
     #  system user, owner of the processes and code on your server
     #  the user and it's home dir will be created if not present
